@@ -19,9 +19,9 @@ def solve(data: list[str]) -> int:
                 rr = min(row_idx + 2, len(data))
 
                 if any(
-                        data[r][c] not in "0123456789."
-                        for r in range(lr, rr)
-                        for c in range(lc, rc)
+                    data[r][c] not in "0123456789."
+                    for r in range(lr, rr)
+                    for c in range(lc, rc)
                 ):
                     res += int(current_number)
 
@@ -30,7 +30,7 @@ def solve(data: list[str]) -> int:
     return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = 0
     with INPUT_PATH.open() as f:
         data = [line.strip() for line in f.readlines()]

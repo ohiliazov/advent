@@ -26,12 +26,10 @@ def solve(data: list[str]) -> int:
 
                 current_number = ""
 
-    return sum(
-        item[0] * item[1] for item in gear_counter.values() if len(item) == 2
-    )
+    return sum(item[0] * item[1] for item in gear_counter.values() if len(item) == 2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = 0
     with INPUT_PATH.open() as f:
         data = [line.strip() for line in f.readlines()]

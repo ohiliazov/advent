@@ -16,7 +16,7 @@ def process_map(lines: list[str], seeds: set[int]) -> set:
         dest_start, source_start, range_length = stripped
 
         for seed in seeds.copy():
-            if seed in range(source_start, source_start+range_length):
+            if seed in range(source_start, source_start + range_length):
                 new_seeds.add(seed - source_start + dest_start)
                 seeds.remove(seed)
 
@@ -43,7 +43,7 @@ def solve(data: list[str]) -> int:
     return min(seeds)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     with INPUT_PATH.open() as f:
         data = [line.strip() for line in f.readlines()]
 

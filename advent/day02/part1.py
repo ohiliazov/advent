@@ -18,11 +18,10 @@ def solve(line: str) -> int:
             if color == "blue" and int(amount) > 14:
                 return 0
 
-
     return game_id
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = 0
     with INPUT_PATH.open() as f:
         for line in f.readlines():

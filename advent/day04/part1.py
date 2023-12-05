@@ -20,7 +20,7 @@ def solve(data: list[str]) -> int:
     return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     with INPUT_PATH.open() as f:
         data = [line.strip() for line in f.readlines()]
 

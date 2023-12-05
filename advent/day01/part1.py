@@ -13,7 +13,7 @@ def solve(line: str):
     return int(line[i] + line[j])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = 0
     with INPUT_PATH.open() as f:
         for line in f.readlines():

@@ -18,7 +18,9 @@ def get_ranges(line: str) -> tuple[int, ...]:
     return tuple(map(int, line.strip().split(" ")))
 
 
-def process_map(lines: list[str], seed_ranges: set[tuple[int, int]]) -> set[tuple[int, int]]:
+def process_map(
+    lines: list[str], seed_ranges: set[tuple[int, int]]
+) -> set[tuple[int, int]]:
     new_seed_ranges = set()
 
     for line in lines:
@@ -69,7 +71,7 @@ def solve(data: list[str]) -> int:
     return min([seed[0] for seed in seeds])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     with INPUT_PATH.open() as f:
         data = [line.strip() for line in f.readlines()]
 

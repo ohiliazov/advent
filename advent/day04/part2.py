@@ -17,13 +17,13 @@ def solve(data: list[str]) -> int:
         match = len(winning_set & have_set)
 
         current_number = cards[idx]
-        for i in range(idx+1, min(idx+1+match, len(data))):
+        for i in range(idx + 1, min(idx + 1 + match, len(data))):
             cards[i] += current_number
 
     return sum(cards.values())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     with INPUT_PATH.open() as f:
         data = [line.strip() for line in f.readlines()]
 
