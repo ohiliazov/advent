@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from advent.utils import load_data
+
 INPUT_PATH = Path(__file__).parent / "input.txt"
 
 
@@ -25,14 +27,12 @@ def process_map(lines: list[str], seeds: set[int]) -> set:
 
 def solve(data: list[str]) -> int:
     seeds = get_seeds(data[0])
-    print(seeds)
 
     lines = []
     for idx, line in enumerate(data[1:]):
         if not line or not line[0].isdigit():
             if lines:
                 seeds = process_map(lines, seeds)
-                print(seeds)
             lines.clear()
         else:
             lines.append(line)
@@ -44,9 +44,5 @@ def solve(data: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    with INPUT_PATH.open() as f:
-        data = [line.strip() for line in f.readlines()]
-
-    # 713923 too low
-
-    print(solve(data))
+    input_data = load_data("day05.txt")
+    print(solve(input_data))

@@ -1,6 +1,4 @@
-from pathlib import Path
-
-INPUT_PATH = Path(__file__).parent / "input.txt"
+from advent.utils import load_data
 
 digits = {
     "1": "1",
@@ -24,7 +22,7 @@ digits = {
 }
 
 
-def solve(line: str):
+def solve_line(line: str):
     i, j = (
         0,
         -1,
@@ -48,10 +46,10 @@ def solve(line: str):
     return int(str(x) + str(y))
 
 
-if __name__ == "__main__":
-    s = 0
-    with INPUT_PATH.open() as f:
-        for line in f.readlines():
-            s += solve(line)
+def solve(data: list[str]) -> int:
+    return sum(solve_line(line) for line in data)
 
-    print(s)
+
+if __name__ == "__main__":
+    input_data = load_data("day01.txt")
+    print(solve(input_data))

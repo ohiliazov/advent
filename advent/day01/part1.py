@@ -1,18 +1,11 @@
 import re
-from pathlib import Path
-from typing import Iterator
 
-INPUT_PATH = Path(__file__).parent / "input.txt"
+from advent.utils import load_data
 
 
-def load_lines() -> Iterator[str]:
-    with INPUT_PATH.open() as f:
-        return (line.strip() for line in f.readlines())
-
-
-def solve():
+def solve(data: list[str]):
     s = 0
-    for line in load_lines():
+    for line in data:
         matches = re.findall(r"\d", line)
         s += int(matches[0] + matches[-1])
 
@@ -20,4 +13,5 @@ def solve():
 
 
 if __name__ == "__main__":
-    print(solve())
+    input_data = load_data("day01.txt")
+    print(solve(input_data))

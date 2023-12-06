@@ -1,10 +1,7 @@
-from pathlib import Path
+from advent.utils import load_data
 
 
-INPUT_PATH = Path(__file__).parent / "input.txt"
-
-
-def solve(line: str) -> int:
+def solve_line(line: str) -> int:
     s, sets = line.split(":")
     game_id = int(s.split(" ")[-1])
 
@@ -21,10 +18,10 @@ def solve(line: str) -> int:
     return game_id
 
 
-if __name__ == "__main__":
-    s = 0
-    with INPUT_PATH.open() as f:
-        for line in f.readlines():
-            s += solve(line)
+def solve(data: list[str]) -> int:
+    return sum(solve_line(line) for line in data)
 
-    print(s)
+
+if __name__ == "__main__":
+    input_data = load_data("day02.txt")
+    print(solve(input_data))

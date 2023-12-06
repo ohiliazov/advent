@@ -1,10 +1,9 @@
-from pathlib import Path
 from collections import defaultdict
 
-INPUT_PATH = Path(__file__).parent / "input.txt"
+from advent.utils import load_data
 
 
-def solve(line: str) -> int:
+def solve_line(line: str) -> int:
     colors = defaultdict(int)
     for subset in line.split(":")[-1].split(";"):
         for cubes in subset.split(","):
@@ -17,10 +16,10 @@ def solve(line: str) -> int:
     return power
 
 
-if __name__ == "__main__":
-    s = 0
-    with INPUT_PATH.open() as f:
-        for line in f.readlines():
-            s += solve(line)
+def solve(data: list[str]) -> int:
+    return sum(solve_line(line) for line in data)
 
-    print(s)
+
+if __name__ == "__main__":
+    input_data = load_data("day02.txt")
+    print(solve(input_data))

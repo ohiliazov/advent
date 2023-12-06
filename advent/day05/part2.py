@@ -1,6 +1,4 @@
-from pathlib import Path
-
-INPUT_PATH = Path(__file__).parent / "input.txt"
+from advent.utils import load_data
 
 
 def get_seeds(line: str) -> set[tuple[int, int]]:
@@ -72,9 +70,5 @@ def solve(data: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    with INPUT_PATH.open() as f:
-        data = [line.strip() for line in f.readlines()]
-
-    # 713923 too low
-
-    print(solve(data))
+    input_data = load_data("day05.txt")
+    print(solve(input_data))

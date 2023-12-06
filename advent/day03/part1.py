@@ -1,7 +1,4 @@
-from pathlib import Path
-
-
-INPUT_PATH = Path(__file__).parent / "input.txt"
+from advent.utils import load_data
 
 
 def solve(data: list[str]) -> int:
@@ -31,8 +28,5 @@ def solve(data: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    s = 0
-    with INPUT_PATH.open() as f:
-        data = [line.strip() for line in f.readlines()]
-
-    print(solve(data))
+    input_data = load_data("day03.txt")
+    print(solve(input_data))
