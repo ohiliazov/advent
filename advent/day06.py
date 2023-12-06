@@ -25,5 +25,5 @@ def solve_part2(data: list[str]) -> int:
 
 if __name__ == "__main__":
     input_data = load_data("day06.txt")
-    print(f"Part 1: {solve_part1(input_data)}")
-    print(f"Part 2: {solve_part2(input_data)}")
+    print(f"Day 6. Part 1: {solve_part1(input_data)}")
+    print(f"Day 6. Part 2: {solve_part2(input_data)}")
