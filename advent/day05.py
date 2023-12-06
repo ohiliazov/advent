@@ -10,15 +10,35 @@ def get_seeds(line: str) -> set[int]:
     return set(map(int, line.strip().split(" ")))
 
 
+def collect_ranges(data: list[str]):
+    all_lines = []
+
+    lines = []
+    for idx, line in enumerate(data[1:]):
+        if line and line[0].isdigit():
+            lines.append(line)
+        elif lines:
+            all_lines.append(lines)
+            lines = []
+
+    all_lines.append(lines)
+
+    return all_lines
+
+
+def parse_range_line(line: str) -> tuple[int, ...]:
+    return tuple(map(int, line.strip().split(" ")))
+
+
 def process_part1(lines: list[str], seeds: set[int]) -> set:
     new_seeds = set()
 
     for line in lines:
-        stripped = map(int, line.strip().split(" "))
-        dest_start, source_start, range_length = stripped
+        dest_start, source_start, range_length = parse_range_line(line)
+        source_end = source_start + range_length
 
         for seed in seeds.copy():
-            if seed in range(source_start, source_start + range_length):
+            if seed in range(source_start, source_end):
                 new_seeds.add(seed - source_start + dest_start)
                 seeds.remove(seed)
 
@@ -28,16 +48,7 @@ def process_part1(lines: list[str], seeds: set[int]) -> set:
 def solve_part1(data: list[str]) -> int:
     seeds = get_seeds(data[0])
 
-    lines = []
-    for idx, line in enumerate(data[1:]):
-        if not line or not line[0].isdigit():
-            if lines:
-                seeds = process_part1(lines, seeds)
-            lines.clear()
-        else:
-            lines.append(line)
-
-    if lines:
+    for lines in collect_ranges(data[1:]):
         seeds = process_part1(lines, seeds)
 
     return min(seeds)
@@ -54,17 +65,13 @@ def get_seed_ranges(line: str) -> set[tuple[int, int]]:
     return seeds
 
 
-def get_ranges(line: str) -> tuple[int, ...]:
-    return tuple(map(int, line.strip().split(" ")))
-
-
 def process_part2(
     lines: list[str], seed_ranges: set[tuple[int, int]]
 ) -> set[tuple[int, int]]:
     new_seed_ranges = set()
 
     for line in lines:
-        dest_start, source_start, range_length = get_ranges(line)
+        dest_start, source_start, range_length = parse_range_line(line)
         source_end = source_start + range_length
 
         for seed_start, seed_length in seed_ranges.copy():
@@ -96,16 +103,7 @@ def process_part2(
 def solve_part2(data: list[str]) -> int:
     seed_ranges = get_seed_ranges(data[0])
 
-    lines = []
-    for line in data[1:]:
-        if line and line[0].isdigit():
-            lines.append(line)
-        else:
-            if lines:
-                seed_ranges = process_part2(lines, seed_ranges)
-            lines.clear()
-
-    if lines:
+    for lines in collect_ranges(data[1:]):
         seed_ranges = process_part2(lines, seed_ranges)
 
     return min([seed[0] for seed in seed_ranges])
