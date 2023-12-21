@@ -58,10 +58,14 @@ class Solution:
         return patterns
 
     def solve_part1(self):
-        return sum(map(partial(process_pattern, smudge_fixed=True), self.patters))
+        return sum(
+            map(partial(process_pattern, smudge_fixed=True), self.patters)
+        )
 
     def solve_part2(self):
-        return sum(map(partial(process_pattern, smudge_fixed=False), self.patters))
+        return sum(
+            map(partial(process_pattern, smudge_fixed=False), self.patters)
+        )
 
 
 if __name__ == "__main__":

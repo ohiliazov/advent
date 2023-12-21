@@ -49,9 +49,9 @@ class Solution:
 
         return {
             Beam(row=beam.row, column=beam.column, direction=new_direction)
-            for new_direction in BEAM_DIRECTIONS[self.grid[beam.row][beam.column]][
-                beam.direction
-            ]
+            for new_direction in BEAM_DIRECTIONS[
+                self.grid[beam.row][beam.column]
+            ][beam.direction]
         }
 
     def _move_once(self, beam: Beam) -> Beam | None:
@@ -93,7 +93,9 @@ class Solution:
             beams |= self._move_beam(beam)
             explored.add(beam)
 
-        return len({(energized.row, energized.column) for energized in explored})
+        return len(
+            {(energized.row, energized.column) for energized in explored}
+        )
 
     def solve_part1(self):
         return self.solve(Beam(row=0, column=0, direction="right"))

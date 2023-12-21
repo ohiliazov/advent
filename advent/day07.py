@@ -56,7 +56,9 @@ def parse_line_part2(line: str) -> tuple[str, tuple[tuple, int]]:
 def solve(data: list[str], parse_func: callable) -> int:
     hands = dict(map(parse_func, data))
     s = 0
-    for idx, hand in enumerate(sorted(hands, key=lambda h: hands[h][0]), start=1):
+    for idx, hand in enumerate(
+        sorted(hands, key=lambda h: hands[h][0]), start=1
+    ):
         s += hands[hand][1] * idx
     return s
 

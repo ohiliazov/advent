@@ -27,7 +27,9 @@ def solve_part1(data: list[str]):
 
 
 def solve_part2(data: list[str]):
-    regex = re.compile(r"(?=(\d|one|two|three|four|five|six|seven|eight|nine))")
+    regex = re.compile(
+        r"(?=(\d|one|two|three|four|five|six|seven|eight|nine))"
+    )
 
     s = 0
     for line in data:

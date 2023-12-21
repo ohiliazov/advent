@@ -11,7 +11,9 @@ def solve_part1(data: list[str]) -> int:
     for history in data:
         while any(history):
             s += history[-1]
-            history = [history[i] - history[i - 1] for i in range(1, len(history))]
+            history = [
+                history[i] - history[i - 1] for i in range(1, len(history))
+            ]
     return s
 
 
@@ -22,7 +24,9 @@ def solve_part2(data: list[str]) -> int:
         value_stack = []
         while any(history):
             value_stack.append(history[0])
-            history = [history[i] - history[i - 1] for i in range(1, len(history))]
+            history = [
+                history[i] - history[i - 1] for i in range(1, len(history))
+            ]
         value = 0
         while value_stack:
             item = value_stack.pop()
