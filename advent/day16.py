@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from advent.utils import load_data
+from advent.common import load_data
 
 BEAM_DIRECTIONS = {
     "|": {

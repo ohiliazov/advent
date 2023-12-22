@@ -1,6 +1,6 @@
 from functools import partial
 
-from advent.utils import load_data
+from advent.common import load_data
 
 
 def process_pattern(pattern: list[str], smudge_fixed: bool) -> int:

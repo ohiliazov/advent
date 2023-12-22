@@ -1,6 +1,6 @@
 import re
 
-from advent.utils import load_data
+from advent.common import load_data
 
 digits = {
     "one": "1",

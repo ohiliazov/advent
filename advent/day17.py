@@ -1,4 +1,4 @@
-from advent.utils import load_data
+from advent.common import load_data
 from enum import Enum
 from queue import PriorityQueue
 

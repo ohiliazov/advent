@@ -1,4 +1,4 @@
-from advent.utils import load_data
+from advent.common import load_data
 
 
 def get_number_of_wins(time: int, distance: int):

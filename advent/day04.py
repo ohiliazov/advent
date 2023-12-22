@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-from advent.utils import load_data
+from advent.common import load_data
 
 
 def get_common_numbers(line: str) -> set[int]:

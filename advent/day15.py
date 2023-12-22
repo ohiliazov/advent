@@ -1,7 +1,7 @@
 from functools import reduce
 from collections import defaultdict, OrderedDict
 
-from advent.utils import load_data
+from advent.common import load_data
 
 
 def hash_algorithm(sequence: str) -> int:

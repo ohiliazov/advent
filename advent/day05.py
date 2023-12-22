@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from advent.utils import load_data
+from advent.common import load_data
 
 INPUT_PATH = Path(__file__).parent / "input.txt"
 
